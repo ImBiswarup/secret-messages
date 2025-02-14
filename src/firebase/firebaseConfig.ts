@@ -3,13 +3,13 @@ import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDzNim0NGimJnScgdIeqisLh_vRt-wudmk",
-    authDomain: "secret-msg-c2f04.firebaseapp.com",
-    databaseURL: "https://secret-msg-c2f04-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "secret-msg-c2f04",
-    storageBucket: "secret-msg-c2f04.firebasestorage.app",
-    messagingSenderId: "364787008959",
-    appId: "1:364787008959:web:70f323f683e26400078d0a"
+    apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+    databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
+    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID
 };
 
 const app = initializeApp(firebaseConfig);
