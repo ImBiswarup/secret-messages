@@ -19,7 +19,7 @@ export default function Home() {
           className="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-full text-lg font-semibold shadow-lg transition-all"
           onClick={() => router.push("/auth")}
         >
-          Get Started 🚀
+          Get Started 🚀 
         </button>
       </div>
     </div>
