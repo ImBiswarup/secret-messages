@@ -5,7 +5,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../context/AuthContext";
 
-const page = () => {
+const Page = () => {
     const { signUp, signIn, signInWithGoogle, logout, user } = useAuth();
     const [userId, setUserId] = useState<string | null>(null);
     const router = useRouter();
@@ -55,4 +55,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default Page;

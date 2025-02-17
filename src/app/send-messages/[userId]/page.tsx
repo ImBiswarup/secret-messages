@@ -7,7 +7,7 @@ import { db } from '../../../firebase/firebaseConfig';
 import { collection, addDoc, Timestamp } from 'firebase/firestore';
 import { motion } from "framer-motion";
 
-const page = () => {
+const Page = () => {
     const [name, setName] = useState("");
     const [message, setMessage] = useState("");
     const [success, setSuccess] = useState(false);
@@ -87,4 +87,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default Page;
