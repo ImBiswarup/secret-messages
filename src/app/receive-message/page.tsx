@@ -6,7 +6,7 @@ import { db } from "@/firebase/firebaseConfig";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useAuth } from "../context/AuthContext";
 import { motion } from "framer-motion";
-import { useRouter } from "next/navigation"; // For navigation
+import { useRouter } from "next/navigation";
 
 interface Message {
     id: string;
@@ -19,7 +19,7 @@ const Page = () => {
     const [messages, setMessages] = useState<Message[]>([]);
     const [userId, setUserId] = useState<string | null>(null);
     const { user } = useAuth();
-    const router = useRouter(); // Initialize router for navigation
+    const router = useRouter();
 
     useEffect(() => {
         const auth = getAuth();

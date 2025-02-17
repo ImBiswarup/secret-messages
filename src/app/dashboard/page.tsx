@@ -3,8 +3,10 @@
 import { useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useRouter } from "next/navigation";
+import { useAuth } from "../context/AuthContext";
 
 const page = () => {
+    const { signUp, signIn, signInWithGoogle, logout, user } = useAuth();
     const [userId, setUserId] = useState<string | null>(null);
     const router = useRouter();
 
@@ -19,6 +21,8 @@ const page = () => {
         });
     }, []);
 
+    console.log(user, user?.uid);
+
     return (
         <div className="min-h-screen flex flex-col items-center justify-center bg-gray-900 text-white px-4">
             <div className="bg-gray-800 p-6 rounded-lg shadow-lg text-center max-w-md">
@@ -28,11 +32,11 @@ const page = () => {
                     <div className="flex flex-col items-center justify-center">
                         <p className="text-sm mb-3">Share this link with others to receive messages:</p>
                         <div className="bg-gray-700 p-2 rounded-lg text-sm">
-                            <code>{`http://localhost:3000/send-messages/${userId}`}</code>
+                            <code>{`${process.env.NEXT_PUBLIC_BASE_URL}/send-messages/${userId}`}</code>
                         </div>
                         <button
                             className="mt-4 bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg"
-                            onClick={() => navigator.clipboard.writeText(`http://localhost:3000/send-messages/${userId}`)}
+                            onClick={() => navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_BASE_URL}/send-messages/${userId}`)}
                         >
                             📋 Copy Link
                         </button>

@@ -14,6 +14,8 @@ const page = () => {
     const router = useRouter();
     const { userId } = useParams();
 
+    // console.log(userId);
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!message.trim()) return alert("Message cannot be empty!");
@@ -29,7 +31,7 @@ const page = () => {
             setSuccess(true);
             setTimeout(() => {
                 setSuccess(false);
-                router.push("/");
+                router.push("/route-to-auth");
             }, 3000);
 
             setName("");
