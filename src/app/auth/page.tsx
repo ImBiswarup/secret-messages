@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useAuth } from "@/app/context/AuthContext";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import Image from "next/image"; 
 
 const AuthPage = () => {
     const { signUp, signIn, signInWithGoogle, logout, user } = useAuth();
@@ -122,7 +123,7 @@ const AuthPage = () => {
                             whileTap={{ scale: 0.95 }}
                             onClick={handleGoogleSignIn}
                         >
-                            <img src="/google-icon.svg" alt="Google" className="w-5 h-5" />
+                            <Image src="/google-icon.svg" alt="Google" width={20} height={20} /> {/* ✅ Fixed Image */}
                             <span>Sign in with Google</span>
                         </motion.button>
                     </motion.div>

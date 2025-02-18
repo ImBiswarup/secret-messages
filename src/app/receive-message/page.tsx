@@ -12,7 +12,7 @@ interface Message {
     id: string;
     name: string;
     message: string;
-    createdAt?: any;
+    createdAt?: string;
 }
 
 const Page = () => {
@@ -26,6 +26,7 @@ const Page = () => {
         onAuthStateChanged(auth, async (user) => {
             if (user) {
                 setUserId(user.uid);
+                console.log(userId);
                 const q = query(collection(db, "AnonymousMessages", user.uid, "userMessages"), orderBy("createdAt", "desc"));
                 const querySnapshot = await getDocs(q);
                 const messageList: Message[] = querySnapshot.docs.map(doc => ({
@@ -40,7 +41,7 @@ const Page = () => {
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white px-6">
             {user ? (
-                <motion.div 
+                <motion.div
                     className="w-full max-w-2xl p-6 rounded-2xl bg-opacity-30 backdrop-blur-lg border border-gray-700 shadow-xl"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -50,7 +51,7 @@ const Page = () => {
                     {messages.length > 0 ? (
                         <motion.div className="space-y-4">
                             {messages.map((msg, index) => (
-                                <motion.div 
+                                <motion.div
                                     key={msg.id}
                                     className="bg-gray-800 p-4 rounded-lg shadow-md border border-gray-700"
                                     initial={{ opacity: 0, scale: 0.9 }}
@@ -63,7 +64,7 @@ const Page = () => {
                             ))}
                         </motion.div>
                     ) : (
-                        <motion.p 
+                        <motion.p
                             className="text-gray-400 text-center text-lg"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
@@ -74,7 +75,7 @@ const Page = () => {
                     )}
                 </motion.div>
             ) : (
-                <motion.div 
+                <motion.div
                     className="flex flex-col items-center justify-center text-center space-y-4"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -82,12 +83,12 @@ const Page = () => {
                 >
                     <h2 className="text-4xl font-bold">🚀 Create an account</h2>
                     <p className="text-lg text-gray-400">Sign up to receive anonymous messages from others!</p>
-                    
+
                     <motion.button
                         className="px-6 py-3 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-500 transition-all duration-300"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        onClick={() => router.push("/auth")} 
+                        onClick={() => router.push("/auth")}
                     >
                         🔑 Go to Auth Page
                     </motion.button>

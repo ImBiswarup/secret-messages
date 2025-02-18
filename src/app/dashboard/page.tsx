@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "../context/AuthContext";
 
 const Page = () => {
-    const { signUp, signIn, signInWithGoogle, logout, user } = useAuth();
+    const { user } = useAuth();
     const [userId, setUserId] = useState<string | null>(null);
     const router = useRouter();
 
